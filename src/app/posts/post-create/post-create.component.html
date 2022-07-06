@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onSavePost(postForm)" #postForm="ngForm" *ngIf="!isLoading">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="title"
+        [ngModel]="post?.title"
+        required
+        minlength="3"
+        placeholder="Note Title"
+        #title="ngModel">
+      <mat-error *ngIf="title.invalid">Enter title for note.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="4"
+        name="content"
+        [ngModel]="post?.content"
+        required
+        placeholder="Note Content"
+        rows="25"
+        #content="ngModel"></textarea>
+      <mat-error *ngIf="content.invalid">Write note here.</mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      style="background-color: rgb(69, 212, 69); color: white;"
+      type="submit">Save Note</button>
+  </form>
+</mat-card>
