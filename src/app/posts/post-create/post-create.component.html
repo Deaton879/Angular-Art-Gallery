@@ -10,7 +10,7 @@
       <mat-error *ngIf="form.get('title').invalid">Enter title for note.</mat-error>
     </mat-form-field>
     <div>
-      <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
+      <button mat-stroked-button type="button" (click)="filePicker.click()">Add an image</button>
       <input type="file" #filePicker (change)="onImagePicked($event)">
     </div>
     <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
