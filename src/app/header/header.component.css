@@ -1,7 +1,12 @@
+app-header {
+  box-shadow: 1rem, 1rem, black;
+}
+
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
 }
 
 a {
@@ -9,6 +14,20 @@ a {
   color: white;
 }
 
+ul a:hover {
+background-color: #3a4152;
+color: white;
+}
+
 .spacer {
   flex: 1 1 auto;
+}
+
+.mat-button {
+  color: white;  
+}
+
+.mat-button:hover {
+  background-color: #3a4152;
+  color: white;
 }

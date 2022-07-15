@@ -1,19 +1,29 @@
-<mat-toolbar style="background: rgb(11, 19, 74);">
+<mat-toolbar style="background: #222630; box-shadow: 2px 2px 8px 4px black;">
   <span>
     <a routerLink="/">
       <img 
-      src="../../assets/images/art.jpg" 
+      src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F1.bp.blogspot.com%2F-KJmOMOehSVc%2FUYjca2b55dI%2FAAAAAAAAiTo%2FrLwO0Ldy92s%2Fs1600%2FAbstract%2BArt%2B14.jpg&f=1&nofb=1" 
       alt="notepad" 
-      style="width: 50px; float: left; margin: -.25rem 0.5rem -.5rem 0rem; border-radius: 5px;"
+      style="width: 75px; float: left; margin: -.25rem 0rem 0rem 0rem; border-radius: 5px; box-shadow: 0px 0px 2px 2px rgb(0 0 0);"
       >
     </a>
     
-    <a routerLink="/">Art Gallery</a>
+    <a routerLink="/" style=" font-family: 'Fredericka the Great', cursive; color: #9aa7b8; font-weight: bold; font-size: larger;
+      text-shadow: 2px 4px 5px black; padding: 1rem;">Art Gallery</a>
   </span>
   <span class="spacer"></span>
   <ul>
-    <li>
-      <a mat-button routerLink="/create" routerLinkActive="mat-accent" >Add Art +</a>
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/create" routerLinkActive="mat-accent" style="font-family: 'Fredericka the Great', cursive; background: url(https://wallpapercave.com/img/upload.png) no-repeat 0px 12px; background-size: 10px 11px; text-shadow: 2px 2px 1px black;">Add Art</a>
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/login" routerLinkActive="mat-accent" style="font-family: 'Fredericka the Great', cursive; background: url(https://wallpapercave.com/img/signin.png) no-repeat 0px 12px; background-size: 10px 11px; text-shadow: 2px 2px 1px black;">Sign-In</a>
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/signup" routerLinkActive="mat-accent" style="font-family: 'Fredericka the Great', cursive; background-color: #3a4152; text-shadow: 2px 2px 1px black;">Sign-Up</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogout()" style="font-family: 'Fredericka the Great', cursive; background: url(https://wallpapercave.com/img/signin.png) no-repeat 0px 12px; background-size: 10px 11px; text-shadow: 2px 2px 1px black;">Logout</button>
     </li>
   </ul>
 </mat-toolbar>

@@ -1,15 +1,19 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <mat-accordion multi="true" *ngIf="posts.length > 0 && !isLoading">
-  <mat-expansion-panel *ngFor="let post of posts">
-    <mat-expansion-panel-header>
+  <mat-expansion-panel *ngFor="let post of posts" style="background-color: rgb(197, 203, 208);">
+    <mat-expansion-panel-header 
+      style="font-family: 'Patrick Hand', cursive; font-size: larger; font-weight: 600; color: black; text-shadow: 2px 1px 0px white;">
       {{ post.title }}
     </mat-expansion-panel-header>
+    
     <div class="post-image">
-      <img [src]="post.imagePath" [alt]="post.title">
+      <img [src]="post.imagePath" [alt]="post.title" style="box-shadow: 0px 0px 3px 3px rgb(0 0 0);">
     </div>
-    <p>{{ post.content }}</p>
-    <mat-action-row>
-      <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
+    <hr>
+    <p style="font-weight: bold;">{{ post.content }}</p>
+    <hr>
+    <mat-action-row *ngIf="userIsAuthenticated && userId == post.creator" style="background-color: rgb(0, 0, 0); color: #ffd30d;">
+      <a mat-button color="primary" [routerLink]="['/edit', post.id]" style="color: #ffd30d;">EDIT</a>
       <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
     </mat-action-row>
   </mat-expansion-panel>
@@ -19,13 +23,19 @@
   [pageSize]="postsPerPage" 
   [pageSizeOptions]="pageSizeOptions" 
   (page)="onChangedPage($event)"
-  *ngIf="posts.length > 0"></mat-paginator>
+  *ngIf="posts.length > 0"
+  style="border-radius: 5px;"
+  ></mat-paginator>
 <p 
   class="info-text mat-body-1" 
   *ngIf="posts.length <= 0 && !isLoading" 
   style="background-color: white; 
-         height:10rem; margin: 5rem; 
-         border: dotted; 
-         border-radius: 5px;">
-  No notes saved!
+         height:10rem; 
+         margin: 5rem; 
+         border: dashed; 
+         border-radius: 5px;
+         font-family: 'Patrick Hand', cursive;
+         font-size: 2rem;
+         padding-top: 8rem;">
+  The Gallery is Empty!
 </p>
